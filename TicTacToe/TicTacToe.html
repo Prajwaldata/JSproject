@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,4 +139,146 @@ function resetGame() {
     </script>
     
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./TicTacToe.css">
+    </head>
+<body>
+    <div class="outer-div">
+        
+        <div class="inner-div">
+            
+            <table class="gametable">
+                <tr>
+                    <td class="tdName"><button></button></td>
+                    <td class="tdName"><button></button></td>
+                    <td class="tdName"><button></button></td>
+                </tr>
+                <tr>
+                    <td class="tdName"><button></button></td>
+                    <td class="tdName"><button></button></td>
+                    <td class="tdName"><button></button></td>
+                </tr>
+                <tr>
+                    <td class="tdName"><button></button></td>
+                    <td class="tdName"><button></button></td>
+                    <td class="tdName"><button></button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        const buttons = document.querySelectorAll("button");
+let currentPlayer = "X"; // X goes first
+let gameBoard = ["", "", "", "", "", "", "", "", ""]; // Represents the 3x3 grid
+let gameActive = true;
+
+// Winning combinations (indices of the gameBoard array)
+const winningConditions = [
+    [0, 1, 2], // top row
+    [3, 4, 5], // middle row
+    [6, 7, 8], // bottom row
+    [0, 3, 6], // left column
+    [1, 4, 7], // middle column
+    [2, 5, 8], // right column
+    [0, 4, 8], // diagonal top-left to bottom-right
+    [2, 4, 6]  // diagonal top-right to bottom-left
+];
+
+// Handle button clicks
+buttons.forEach((button, index) => {
+    button.addEventListener('click', () => handleButtonClick(index));
+});
+
+function handleButtonClick(index) {
+    // Only proceed if the cell is empty and game is active
+    if (gameBoard[index] === "" && gameActive) {
+        // Update game board and UI
+        gameBoard[index] = currentPlayer;
+        buttons[index].textContent = currentPlayer;
+        buttons[index].classList.add(currentPlayer.toLowerCase());
+        const clickedButton = event.target;
+        clickedButton.style.fontSize = "40px";
+        // Check for win or draw
+        checkResult();
+        
+        // Switch player
+        currentPlayer = currentPlayer === "X" ? "Y" : "X";
+    }
+}
+
+function checkResult() {
+    let roundWon = false;
+    
+    // Check all winning conditions
+    for (let i = 0; i < winningConditions.length; i++) {
+        const [a, b, c] = winningConditions[i];
+        
+        // Check if all three positions have the same player mark and aren't empty
+        if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
+            roundWon = true;
+            break;
+        }
+    }
+    
+    // If someone won
+    if (roundWon) {
+        gameActive = false;
+        currentPlayer = (currentPlayer==="X")?"Y":"X";
+        setTimeout(() => alert(`Player ${currentPlayer} wins!`), 300);
+        return;
+    }
+    
+    // Check for draw (all cells filled)
+    if (!gameBoard.includes("")) {
+        gameActive = false;
+        setTimeout(() => alert("Game ended in a draw!"), 10);
+    }
+}
+
+// Reset game function (you can call this from a reset button)
+function resetGame() {
+    gameBoard = ["", "", "", "", "", "", "", "", ""];
+    gameActive = true;
+    currentPlayer = "X";
+    buttons.forEach(button => {
+        button.textContent = "";
+        button.classList.remove("X", "Y");
+    });
+}
+        // let previous_text="X";
+        // const cell = document.querySelector('td');
+        // const buttons = document.querySelectorAll("button");
+        // buttons.forEach(button => {
+        //     button.addEventListener('click', (event) => {
+        //         const clickedButton = event.target;
+        //         if( clickedButton.textContent!== "X" && clickedButton.textContent!== "Y" )
+        //     {
+        //         clickedButton.parentElement.style.backgroundColor = "blue";
+        //         clickedButton.textContent=previous_text;
+        //         clickedButton.style.fontSize = "40px";
+        //         // clickedButton.style.["font-size"] = "20px";
+        //  if(previous_text !== "X")
+        //     {
+        //         clickedButton.style.backgroundColor="red";
+        //         previous_text="X"
+        //     }
+        //     else
+        //     {
+        //         clickedButton.style.backgroundColor="green";
+        //         previous_text="Y"
+        //     }
+        //     }
+            
+        //     });
+        // });
+    </script>
+    
+</body>
+>>>>>>> e26c0132053c5da1acf0653324218702dbb95109
 </html>

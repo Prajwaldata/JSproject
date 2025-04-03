@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
     padding: 0;
     margin: 0;
@@ -36,4 +37,44 @@ button{
     width: 200px;            /* Fixed width for cells */
     background: white;
     position: relative;     /* Needed for absolute positioning of button */
+=======
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: skyblue;
+}
+button{
+    height: 100%;
+    width: 100%;
+    position: absolute;      /* Position absolutely within the cell */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all 0.3s;
+}
+.inner-div
+{
+    
+    height: 60%;
+    width: 60%;
+    background: rosybrown;
+    transform: translate(25%, 0%);
+    border: none;
+}
+
+.tdName {
+    height: 160px;          /* Fixed height for cells */
+    width: 200px;            /* Fixed width for cells */
+    background: white;
+    position: relative;     /* Needed for absolute positioning of button */
+>>>>>>> e26c0132053c5da1acf0653324218702dbb95109
 }

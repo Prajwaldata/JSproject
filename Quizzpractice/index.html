@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        *{
+            padding:0 ;
+            margin: 0%;
+            box-sizing: border-box;
+            transition:  0.3s;
+        }
+        body{
+            height: 100vh;
+            width: 100vw;
+            background: rgb(38, 0, 100);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .outerDiv
+        {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            flex-direction: column;
+            width: 60%;
+            background: rgb(83, 50, 128);
+            padding: 10px;
+            border-radius: 24px;
+            border: 1px black solid;
+        }
+        [class^="inner-div"]
+        {
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            /* height: auto; */
+            
+            flex-direction: column;
+            width: 90%;
+            padding: 10px;
+            margin: 10px;
+            /* background-color: rgb(165, 143, 255); */
+        }
+        button{         
+            padding: 10px;
+            /* background: black; */
+            width: 100%;
+            margin: 10px 0;
+            display: block;
+            text-align: center;
+            border-radius: 10px;
+        }
+        button:hover{
+            background: rgb(38, 0, 100);
+            color: white;
+            transform: scale(1.02);
+        }
+        .pagebut{
+            padding: 10px 5px ;
+            width: 80px;
+        }
+
+        .indexQuestion
+        {
+          width: 60%;
+          /* background: rosybrown; */
+          height: 10%;
+          display: flex;
+          justify-content: end;
+          align-items: center;
+          padding-right: 50px;
+          color: aliceblue;
+        }
+
+    </style>
+  </head>
+  <body>
+    <div class="indexQuestion" style="font-size: 30px;">
+        <h3 class="score" >
+        <h4 class="total-score">0</h4>/
+        <h4 class="obtained-score">0</h4>
+      </h3>
+    </div>
+    <div class="outerDiv">
+      <div class="inner-div heading">
+        <H3 class="question" style="color: aliceblue;">HI There This is the Question</H3>
+      </div>
+      <div class="inner-div">
+        <button class="button1">Answer1</button>
+        <button class="button2">Answer2</button>
+        <button class="button3">Answer3</button>
+        <button class="button4">Answer4</button>
+      </div>
+      <div class="pagebutton">
+        <button class="pagebut">Next</button>
+    </div>
+    </div>
+    <script src="./script.js">
+        
+    </script>
+  </body>
+</html>

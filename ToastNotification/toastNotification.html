@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div>
+        <div class="divbutton">
+            <button class="button1" onclick="showToast('s')">Sucess</button>
+            <button class="button2" onclick="showToast('e')">Error</button>
+            <button class="button3" onclick="showToast('i')">Invalid</button>
+        </div>
+        <div id="toastBox">
+            <div class="sucess"></div>
+            <div class="error"></div>
+            <div class="invalid"></div>
+        </div>
+    </div>
+    <script>
+        let toastBox = document.getElementById("toastBox");
+        let msg="";
+        function showToast(a) {
+    let toast = document.createElement('div');
+    toast.classList.add('toast');
+    
+    if(a === 's') {
+        msg = "Successfully Submitted!";
+        toast.classList.add('success');
+    }
+    else if(a === 'i') {
+        msg = "Invalid input, Check Again!";
+        toast.classList.add('invalid');
+    }
+    else {
+        msg = "Please Fix the Error!";
+        toast.classList.add('error');
+    }
+    
+    toast.innerHTML = msg;
+    toastBox.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.remove();
+    }, 5000);
+}
+    </script>
+</body>
+</html>

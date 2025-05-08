@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+
+        box-sizing: border-box;
+        font-family: "Times New Roman", Times, serif;
+      }
+      body {
+        background: lightblue;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .skill {
+        width: 160px;
+        height: 160px;
+        /* background:red ; */
+        position: relative;
+      }
+      .outer {
+        border-radius: 50%;
+        /* border:  1px solid navy; */
+        width: 160px;
+        height: 160px;
+        padding: 20px;
+        box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
+          -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+      }
+      .inner {
+        height: 120px;
+        width: 120px;
+        border-radius: 50%;
+        /* border: 1px solid red; */
+        box-shadow:  
+        inset -6px -6px 10px -1px rgba(255, 255, 255, 0.7), inset 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
+        -6px -6px 10px -1px rgba(255, 255, 255, 0.7), 6px 6px 10px -1px rgba(0, 0, 0, 0.15)
+         ;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+      }
+      #number{
+        font-weight: 600px;
+        color: #555;
+      }
+      circle{
+        fill: none;
+        stroke:  url(#GradientColor);
+        stroke-width: 20px;
+        stroke-dasharray: 450;
+        stroke-dashoffset: 450;
+        animation: anime 2s linear forwards ;
+      }
+      /* @keyframes anime {
+        100%
+        {
+            stroke-dashoffset: 0;
+        }
+      } */
+      svg{
+        position :absolute;
+        top :0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="skill">
+      <div class="outer">
+        <div class="inner">
+            <div id="numbers">
+                <span id="number">19%</span>
+            </div>
+        </div>
+      </div>
+      <div>
+
+          <label for="">Enter Your Percentage: </label>
+          <input type="number" id="percentageInput" min="0" max="100" oninput="validateInput(this)" />
+          <button onclick="updateCircle()">Submit</button>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+        <defs>
+          <linearGradient id="GradientColor">
+            <stop offset="0%" stop-color="#e91e63" />
+            <stop offset="100%" stop-color="#673ab7" />
+          </linearGradient>
+        </defs>
+        <circle id="circle" cx="80" cy="80" r="70" stroke-linecap="round" />
+      </svg>
+    </div>
+  </body>
+  <script>
+    let circle = document.getElementById("circle")
+    let loader =  document.getElementById("number");
+    handleChange=(val)=>{
+        loader.innerHTML=`${val}%`
+    }
+    function validateInput(input){
+        if(input.value > 100)
+    {
+        input.value = 100
+    }
+    else if(input.value < 0)
+    {
+        input.value=0
+    }
+    handleChange(input.value);
+    }
+    function updateCircle() {
+  let percentage = Number(loader.textContent.replace('%', ''));
+
+  circle.animate(
+    [
+      { strokeDashoffset: 450 },
+      { strokeDashoffset: 450 - (450 * percentage / 100) }
+    ],
+    { duration: 1000, fill: "forwards" }
+  );
+}
+
+    
+   circle.animate([{ strokeDashoffset: 0 }, { strokeDashoffset: 450 }], { duration: 1000, fill: "forwards" });
+
+setTimeout(() => {
+  circle.animate([{ strokeDashoffset: 450 }, { strokeDashoffset: 450 - (450 * Number(loader.textContent.replace('%', '')) / 100) }], { duration: 1000, fill: "forwards" });
+}, 2000);
+
+  </script>
+</html>
